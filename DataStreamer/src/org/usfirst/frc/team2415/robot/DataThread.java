@@ -11,11 +11,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class dataThread implements Runnable{
+public class DataThread implements Runnable{
 
 	String url;
 	Map<String, String> data;
-	public dataThread(String url, Map<String, String> data){
+	public DataThread(String url, Map<String, String> data){
 		this.url = url;
 		this.data = data;
 	}

@@ -20,7 +20,7 @@ import org.usfirst.frc.team2415.robot.WiredCatJoystick;
 import org.usfirst.frc.team2415.robot.subsystems.DriveSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team2415.robot.dataThread;
+import org.usfirst.frc.team2415.robot.DataThread;
 /**
  *
  */
@@ -99,7 +99,7 @@ public class ArcadeDriveCommand extends Command {
 		
 		//thread
 		
-		executor.execute(new dataThread(url,data));
+		executor.execute(new DataThread(url,data));
     	
     	
     	//:TODO make it stream encoder values
