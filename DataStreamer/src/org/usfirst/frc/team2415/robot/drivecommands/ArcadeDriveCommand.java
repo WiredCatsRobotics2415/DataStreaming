@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import org.usfirst.frc.team2415.robot.Robot;
 import org.usfirst.frc.team2415.robot.WiredCatGamepad;
@@ -26,7 +27,7 @@ import org.usfirst.frc.team2415.robot.DataThread;
  */
 public class ArcadeDriveCommand extends Command {
 	String ip = "IP of web server";
-	ExecutorService executor = Executors.newFixedThreadPool(5);
+	ExecutorService executor = Executors.newFixedThreadPool(7);
 	private float DEADBAND = 0.05f;
 	private float INTERPOLATION_FACTOR = 0.75f;   //Nathan's Settings
 	private float STRAIGHT_LIMITER = 0.95f;
@@ -95,11 +96,14 @@ public class ArcadeDriveCommand extends Command {
 		
 		
 		// for data formatting
-		data.put("timeStamp", String.valueOf((new Date()).getTime()));
+		data.put("timeStamp", String.valueOf((new Date()).toString()));
 		
 		//thread
+		if(((ThreadPoolExecutor)executor).getActiveCount() < 7){
+			
+			executor.execute(new DataThread(url,data));
 		
-		executor.execute(new DataThread(url,data));
+		}
     	
     	
     	//:TODO make it stream encoder values
