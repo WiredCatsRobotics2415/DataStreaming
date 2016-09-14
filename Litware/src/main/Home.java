@@ -39,6 +39,7 @@ public class Home extends HttpServlet {
 		//out.append(current.get(current.size()-1));
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html; charset=UTF-8");
+		out.append("Last 50 values with times recieved:");
 		RequestDispatcher rd = request.getRequestDispatcher("HTML.jsp");
 		//rd.include(request, response);
 		for(int i = current.size()-1;i>current.size()-50;i--){
@@ -60,8 +61,9 @@ public class Home extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		current.add(String.valueOf(request.getParameter("left")+ "\n" + request.getParameter("right")));
+		current.add(String.valueOf("Time: " + request.getParameter("timeStamp")+ " Left: "+ request.getParameter("left")+ " Right: " + request.getParameter("right")));
 		
+		 
 		
 		//System.out.println(current);
 		//doGet(request, response);
