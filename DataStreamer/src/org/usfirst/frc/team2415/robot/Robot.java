@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
 	public static WiredCatGamepad gamepad;
 	public static WiredCatJoystick operator;
 	
-	public static boolean singlePlayerMode = false;
+	public static boolean singlePlayerMode = true;
 	
 	private Compressor compressor;
 	
