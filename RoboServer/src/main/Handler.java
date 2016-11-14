@@ -4,6 +4,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.usfirst.frc.team2415.robot.StreamerPacket;
+
 public abstract class Handler implements Runnable{
 
 	abstract void setPacket(StreamerPacket packet);

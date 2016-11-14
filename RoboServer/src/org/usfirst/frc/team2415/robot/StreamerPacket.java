@@ -1,4 +1,6 @@
-package main;
+package org.usfirst.frc.team2415.robot;
+
+
 
 import java.io.Serializable;
 import java.util.Date;
@@ -51,3 +53,4 @@ public class StreamerPacket implements Serializable{
 	}
 	
 }
+

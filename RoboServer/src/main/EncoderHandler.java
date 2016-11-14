@@ -1,5 +1,7 @@
 package main;
 
+import org.usfirst.frc.team2415.robot.StreamerPacket;
+
 @name(type = "Encoder")
 public class EncoderHandler extends Handler{
 	StreamerPacket packet;

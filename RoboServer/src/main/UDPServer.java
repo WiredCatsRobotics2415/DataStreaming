@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.usfirst.frc.team2415.robot.StreamerPacket;
+
 public class UDPServer implements Runnable {
 	List<Class<? extends Handler>> classes = new ArrayList<Class<? extends Handler>>();
 	DatagramSocket server;
@@ -32,6 +34,7 @@ public class UDPServer implements Runnable {
 			DatagramPacket packet = new DatagramPacket(buf, buf.length);
 			try {
 				server.receive(packet);
+				System.out.println("recieved");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -42,7 +45,7 @@ public class UDPServer implements Runnable {
 				ObjectInputStream is = new ObjectInputStream(in);
 
 				StreamerPacket streamerPacket = (StreamerPacket) is.readObject();
-
+				System.out.println(streamerPacket.getAttribute("Encoder"));
 				for (int i = 0; i < classes.size(); i++) {
 					Annotation annotation = classes.get(i).getAnnotation(name.class);
 					name type = (name) annotation;
