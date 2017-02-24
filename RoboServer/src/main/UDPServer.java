@@ -4,17 +4,22 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.lang.annotation.Annotation;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import org.usfirst.*;
+
+import org.usfirst.frc.team2415.robot.StreamerPacket;
 
 public class UDPServer implements Runnable {
 	List<Class<? extends Handler>> classes = new ArrayList<Class<? extends Handler>>();
 	DatagramSocket server;
 
 	public UDPServer(int port) {
-		classes.add(EncoderHandler.class);
+		classes.add(ShooterHandler.class);
+		classes.add(FeederHandler.class);
 		try {
 			server = new DatagramSocket(port);
 			server.setReceiveBufferSize(1);
